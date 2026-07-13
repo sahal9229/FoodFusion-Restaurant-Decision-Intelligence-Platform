@@ -1,0 +1,197 @@
+# FoodFusion Orders Template Guide
+
+## Introduction
+
+This document explains how to prepare the **FoodFusion Orders CSV Template** before uploading it to the FoodFusion platform.
+
+Following this template ensures your data can be validated, transformed, and loaded successfully into the analytics pipeline.
+
+---
+
+# File Requirements
+
+- File Format: CSV (.csv)
+- Maximum File Size: 100 MB
+- First Row must contain column headers
+- Column names must not be changed
+- Required columns cannot be removed
+
+---
+
+# Required Columns
+
+| Column | Data Type | Required | Example |
+|----------|-----------|----------|---------|
+| order_id | String | Yes | ORD10001 |
+| order_date | Date | Yes | 2026-07-08 |
+| order_time | Time | Yes | 12:30:15 |
+| restaurant_name | String | Yes | Pizza Palace |
+| city | String | Yes | Bengaluru |
+| menu_item | String | Yes | Chicken Burger |
+| category | String | Yes | Burger |
+| quantity | Integer | Yes | 2 |
+| unit_price | Decimal | Yes | 180.00 |
+| total_amount | Decimal | Yes | 360.00 |
+| payment_method | String | Yes | UPI |
+| order_status | String | Yes | Delivered |
+
+---
+
+# Validation Rules
+
+## order_id
+
+- Required
+- Must be unique
+- Cannot be empty
+
+Example
+
+```
+ORD10001
+```
+
+---
+
+## order_date
+
+Format
+
+```
+YYYY-MM-DD
+```
+
+Correct
+
+```
+2026-07-08
+```
+
+Wrong
+
+```
+07/08/2026
+```
+
+---
+
+## order_time
+
+Format
+
+```
+HH:MM:SS
+```
+
+Correct
+
+```
+13:45:21
+```
+
+---
+
+## quantity
+
+- Must be greater than 0
+
+Correct
+
+```
+2
+```
+
+Wrong
+
+```
+0
+```
+
+---
+
+## unit_price
+
+- Must be greater than 0
+
+Correct
+
+```
+180.00
+```
+
+Wrong
+
+```
+-180
+```
+
+---
+
+## total_amount
+
+Should equal
+
+Quantity × Unit Price
+
+Example
+
+```
+2 × 180 = 360
+```
+
+---
+
+## payment_method
+
+Allowed Values
+
+- Cash
+- Card
+- UPI
+- Wallet
+
+---
+
+## order_status
+
+Allowed Values
+
+- Delivered
+- Pending
+- Cancelled
+
+---
+
+# Upload Validation
+
+FoodFusion checks:
+
+- File type
+- Required columns
+- Missing values
+- Duplicate Order IDs
+- Invalid prices
+- Invalid quantities
+- Invalid payment methods
+- Invalid order status
+
+If validation fails, the upload is rejected.
+
+---
+
+# Sample Data
+
+Refer to
+
+orders_template.csv
+
+for a complete example.
+
+---
+
+# Notes
+
+- Do not rename columns.
+- Do not remove required columns.
+- Do not upload Excel (.xlsx) files.
+- Save the file as UTF-8 encoded CSV.

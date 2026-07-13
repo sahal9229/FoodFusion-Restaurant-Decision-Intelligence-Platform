@@ -1,0 +1,4 @@
+order_id,order_date,order_time,restaurant_name,city,menu_item,category,quantity,unit_price,total_amount,payment_method,order_status
+ORD10001,2026-07-08,12:30:15,Pizza Palace,Bengaluru,Chicken Burger,Burger,2,180.00,360.00,UPI,Delivered
+ORD10002,2026-07-08,13:10:42,Pizza Palace,Bengaluru,Veg Pizza,Pizza,1,420.00,420.00,Card,Delivered
+ORD10003,2026-07-08,14:05:11,Pizza Palace,Bengaluru,French Fries,Snacks,3,120.00,360.00,Cash,Pending
