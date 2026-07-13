@@ -1,0 +1,155 @@
+@import "tailwindcss";
+
+@theme {
+  --color-outline: #8c909f;
+  --color-outline-variant: #424754;
+  --color-on-background: #dae2fd;
+  --color-surface-bright: #31394d;
+  --color-on-surface: #dae2fd;
+  --color-on-surface-variant: #c2c6d6;
+  --color-surface-container-high: #222a3d;
+  --color-surface-container-highest: #2d3449;
+  --color-surface: #0b1326;
+  --color-background: #0b1326;
+  --color-secondary-container: #03b5d3;
+  --color-surface-dim: #0b1326;
+  --color-primary: #3b82f6;
+  --color-primary-container: #adc6ff;
+  --color-on-primary-container: #00285d;
+  --color-surface-container-lowest: #060e20;
+  --color-surface-container-low: #131b2e;
+  --color-surface-container: #171f33;
+  --color-error: #ffb4ab;
+  --color-error-container: #93000a;
+  --color-secondary: #06b6d4;
+  --color-tertiary: #10b981;
+  --color-on-tertiary: #003824;
+
+  --font-sans: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  /* Custom spacing parameters unique to this design layout */
+  --spacing-gutter: 20px;
+  --spacing-unit: 4px;
+  --spacing-container-padding: 32px;
+}
+
+/* Custom Spacing Classes to avoid overriding standard Tailwind spacing scale (which broke max-w-sm/md) */
+@utility p-xs { padding: 4px; }
+@utility p-sm { padding: 8px; }
+@utility p-md { padding: 16px; }
+@utility p-lg { padding: 24px; }
+@utility p-xl { padding: 40px; }
+
+@utility px-xs { padding-left: 4px; padding-right: 4px; }
+@utility px-sm { padding-left: 8px; padding-right: 8px; }
+@utility px-md { padding-left: 16px; padding-right: 16px; }
+@utility px-lg { padding-left: 24px; padding-right: 24px; }
+@utility px-xl { padding-left: 40px; padding-right: 40px; }
+
+@utility py-xs { padding-top: 4px; padding-bottom: 4px; }
+@utility py-sm { padding-top: 8px; padding-bottom: 8px; }
+@utility py-md { padding-top: 16px; padding-bottom: 16px; }
+@utility py-lg { padding-top: 24px; padding-bottom: 24px; }
+@utility py-xl { padding-top: 40px; padding-bottom: 40px; }
+
+@utility py-unit { padding-top: 4px; padding-bottom: 4px; }
+
+@utility gap-xs { gap: 4px; }
+@utility gap-sm { gap: 8px; }
+@utility gap-md { gap: 16px; }
+@utility gap-lg { gap: 24px; }
+@utility gap-xl { gap: 40px; }
+
+@utility mb-xs { margin-bottom: 4px; }
+@utility mb-sm { margin-bottom: 8px; }
+@utility mb-md { margin-bottom: 16px; }
+@utility mb-lg { margin-bottom: 24px; }
+@utility mb-xl { margin-bottom: 40px; }
+@utility mb-unit { margin-bottom: 4px; }
+
+@utility pb-xs { padding-bottom: 4px; }
+@utility pb-sm { padding-bottom: 8px; }
+@utility pb-md { padding-bottom: 16px; }
+@utility pb-lg { padding-bottom: 24px; }
+@utility pb-unit { padding-bottom: 4px; }
+
+@utility mt-xs { margin-top: 4px; }
+@utility mt-sm { margin-top: 8px; }
+@utility mt-md { margin-top: 16px; }
+@utility mt-lg { margin-top: 24px; }
+@utility mt-xl { margin-top: 40px; }
+
+@utility pt-xs { padding-top: 4px; }
+@utility pt-sm { padding-top: 8px; }
+@utility pt-md { padding-top: 16px; }
+@utility pt-lg { padding-top: 24px; }
+
+@utility ml-sm { margin-left: 8px; }
+@utility mr-sm { margin-right: 8px; }
+@utility ml-xs { margin-left: 4px; }
+@utility mr-xs { margin-right: 4px; }
+
+/* Custom Typography classes to replicate design system layout */
+@utility font-display-lg { font-family: "Inter", sans-serif; }
+@utility text-display-lg { font-size: 48px; line-height: 1.1; letter-spacing: -0.02em; font-weight: 600; }
+
+@utility font-headline-lg { font-family: "Inter", sans-serif; }
+@utility text-headline-lg { font-size: 32px; line-height: 1.2; letter-spacing: -0.02em; font-weight: 600; }
+
+@utility font-headline-md { font-family: "Inter", sans-serif; }
+@utility text-headline-md { font-size: 20px; line-height: 1.4; letter-spacing: -0.01em; font-weight: 500; }
+
+@utility font-body-lg { font-family: "Inter", sans-serif; }
+@utility text-body-lg { font-size: 16px; line-height: 1.6; font-weight: 400; }
+
+@utility font-body-md { font-family: "Inter", sans-serif; }
+@utility text-body-md { font-size: 14px; line-height: 1.5; font-weight: 400; }
+
+@utility font-label-md { font-family: "Inter", sans-serif; }
+@utility text-label-md { font-size: 12px; line-height: 1; letter-spacing: 0.02em; font-weight: 500; }
+
+@utility font-mono-code { font-family: "JetBrains Mono", monospace; }
+@utility text-mono-code { font-size: 13px; line-height: 1.5; font-weight: 400; }
+
+@layer base {
+  body {
+    @apply bg-background text-on-background font-sans antialiased;
+  }
+}
+
+/* Custom scrollbars for high data density */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #2d3449;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #424754;
+}
+
+/* Pulse animation for stepper and active running status */
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 8px rgba(59, 130, 246, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+  }
+}
+
+.pulsing-indicator {
+  animation: pulse-ring 2s infinite;
+}
